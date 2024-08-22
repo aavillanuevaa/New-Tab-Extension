@@ -1,1 +1,1 @@
-"# new-tab-extension" 
+New Tab Extension
