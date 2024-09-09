@@ -1,8 +1,9 @@
 body{
-    background-image: url('images/background.jpg');
+    /* background-image: url('images/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment: fixed;  */
+    background-color: #121413;
 }
 
 
@@ -12,42 +13,257 @@ body{
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
-    font-size: 35px;
-    padding-bottom: 10px;
-    padding-top: 30px;
+    font-size: 32px;
+    padding-top: 15px;
+    color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
 }
 
+#greeting{
+    font-size: 21px;
+    
+}
 #content{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
-#mid{
+#left{
+    display: flex;
+
+    flex-direction: column;
+}
+
+#daysLeft, #daysLeft2{
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    color: #f2f2f2;
+}
+
+    
+
+#calculate{
+    font-family: "Archivo", sans-serif;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    background-color: #1f2020;
+    border-radius: 5px;
+    padding: 10px;
+    flex-direction: column;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    width:360px;
+    transition: 0.3s;
+}
+#border{
+    padding:10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    text-align: center;
+    align-items: center;
+    display: flex;
     flex-direction: column;
 }
 
 
 
+#input_wrap{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0px 8px;
+    
+}
+
+#input_wrap p{
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+#input_wrap b{
+    font-size: 10px;
+}
+
+
+#myDate{
+    font-family: "Archivo", sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: grey;
+    cursor:text;
+    border: 2.5px solid;
+    padding: 0.35em 0.5em;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    background-color: black;
+    transition: 0.4s;
+    color-scheme: dark;
+    
+    
+} 
 
 
 
+
+#mid{
+    display: flex;
+    top:130px;
+    flex-direction: column;
+    justify-content: center;
+    
+    /* position:absolute; */
+    
+}
+
+#right{
+    
+    display: flex;
+    justify-content: center;
+    /* position:absolute; */
+}
+
+#notepad{
+    font-family: "Archivo", sans-serif;
+    font-size: 15px;
+    padding: 0px 15px 16px;
+    background-color: #1f2020;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    
+}
+
+#notepad h, .current-date{
+    font-size: 12px;
+    align-self: center;
+    padding-left:5px;
+    font-family: "Archivo", sans-serif;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: grey;
+    border: 3px solid;
+    padding: 0.35em 0.5em;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    background-color: black;
+}
+
+
+
+#toprow{
+    display:flex;
+    flex-direction: row;
+    justify-content: left;
+    gap:20px;
+}
+
+#buttons{
+    display: inherit;
+    gap:15px;
+    justify-content: right;
+    width:100%;
+    padding-right: 6px;
+}
+
+#note_wrapper{
+    padding-top: 4px;
+}
+
+
+#note_wrapper textarea{
+    
+    background-color:#2b2b2b ;
+    border-radius: 4px;
+    color:#f2f2f2;
+    resize: none;
+    overflow: hidden;
+    padding: 0px 5px;
+
+    font-size: 16px;
+    line-height: 28px;
+    background-image: linear-gradient(transparent, transparent 27px, gray 0px);
+    background-size: 100% 28px;
+
+    
+}
+
+
+
+#save, #clear, #dateSubmit{
+    font-family: "Archivo", sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: grey;
+    cursor: pointer;
+    border: 3px solid;
+    padding: 0.35em 0.5em;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    background-color: black;
+    transition: 0.4s;
+}
+
+#save:hover, #clear:hover, #dateSubmit:hover, #myDate:hover{
+    background-color: #2b2b2b;
+    color:white;
+}
+
+
+
+
+
+
+#outline{
+    border:solid 6px #302d2d;
+    border-radius: 4px;
+}
+
+#clock_border{
+    border: solid 2px lightgray;
+    padding:6px;
+    border-radius: 2px;
+    background-color:#1f2020;
+}
 .clock {
-    padding-top: 15px;
-    font-size: 25px;
+    font-size: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 600;
+    padding:4px;
+    
 }
 
 .clock div {  
     display: flex;
-    color: #150c41;
+    color: #f2f2f2;
 }
 .clock span {
     font-weight: 800;
-    color:black;
+    color: #f2f2f2;;
+    font-size:28px;
 }
 
 
@@ -60,12 +276,13 @@ body{
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
+    padding-top: 0px;
 }
 
 
 .calendar_wrapper{
     width: 650px;
-    background: #fff;
+    background: #2b2b2b;
     border-radius: 10px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.12);
 }
@@ -73,9 +290,15 @@ body{
 .calendar_wrapper header{
     display: flex;
     align-items: center;
-    padding: 25px 30px 0px;
+    padding: 0px 20px 5px;
     justify-content: space-between;
+    
+    background-color: #1f2020;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color:white;
 }
+
 
 
 
@@ -84,38 +307,33 @@ header .icons{
 }
 
 header .icons span{
-    height: 38px;
-    width: 38px;
+    height: 40px;
+    width: 40px;
     margin: 0 1px;
     cursor: pointer;
-    color: #878787;
+    color: #333;
     text-align: center;
     line-height: 38px;
-    font-size: 1.9rem;
+    font-size: 2.5rem;
     user-select: none;
-    border-radius: 50%;
+    padding-right: 10px;
+    transition: 0.3s;
 }
 
 .icons span:last-child{
     margin-right: -10px;
 }
 header .icons span:hover{
-    background: #f2f2f2;
+    color:white;
 }
 
 header .current-date{
-    font-size: 1.45rem;
-    font-weight: 500;
-}
-
-header .current-date{
-    font-size: 1.45rem;
+    font-size: 1rem;
     font-weight: 500;
 }
 
 .calendar{
     padding: 20px;
-    padding-top: 15px;
 }
 .calendar ul{
     padding-left: 0px;
@@ -124,11 +342,15 @@ header .current-date{
     flex-wrap: wrap;
     text-align: center;
 }
+.calendar .weeks{
+    padding-top: 16px;
+}
+
 .calendar .days{
     margin-bottom: 20px;
 }
 .calendar li{
-    color: #333;
+    color: #f2f2f2;
     width: calc(100% / 7);
     font-size: 1.07rem;
 }
@@ -143,10 +365,10 @@ header .current-date{
     margin-top: 30px;
 }
 .days li.inactive{
-    color: #aaa;
+    color: gray;
 }
 .days li.active{
-    color: #fff;
+    color: lightgrey;
 }
 
 .days li::before{
@@ -162,28 +384,34 @@ header .current-date{
 }
 
 .days li.active::before{
-    background: #29738e;
+    background:#121413;
 }
 .days li:not(.active):hover::before{
-    background: #f2f2f2;
+    background: #1f2020;
 }
 
 
 
 
-
+form.search_bar{
+    width: 410px;
+    justify-content: center;
+}
 #search{
     text-align: center;
-    
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 .search_container{
-    padding: 5%;
+    padding-top: 12px;
     justify-content: center;
-    padding-top: 50px;
+    
+    
 }
 
 .search_bar{
-    max-width: 700px;
+    max-width: 750px;
     background-color: rgba(0,0,0,0.3);
     display: flex;
     align-items: center;
@@ -198,12 +426,12 @@ header .current-date{
     border: 0;
     outline: none;
     font-size: 20px;
-    color: #fff;
+    color: lightgrey;
     padding-left: 10px;
 }
 
-::placeholder{
-    color: #f2f2f2;
+.search_container ::placeholder{
+    color: white;
 }
 
 .search_bar button img{
@@ -215,7 +443,7 @@ header .current-date{
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    background: #5f96aa;
+    background: #292929;
     cursor: pointer;
 }
 
@@ -259,7 +487,7 @@ header .current-date{
 #link_container span{
     width: 38px;
     height: 38px;
-    border: 5px solid #29738e;
+    border: 5px solid #302d2d;
     border-radius:15px;
     padding: 5px;
     text-align: center;
@@ -268,7 +496,7 @@ header .current-date{
     align-items: center;
     justify-content: center;
     transition:0.2s;
-    background-color: #5f96aa;
+    background-color: #3b3737;
     
 }
 
@@ -288,6 +516,7 @@ header .current-date{
     #row {
         gap: 37px;
     }
+    
 }
 
 @media (max-width: 1800px) {
@@ -333,9 +562,13 @@ header .current-date{
         width: 40px;
         height: 40px;
     }
-    .search_container{
-        padding-top:5%;
+    
+
+    #note_wrapper textarea{
+        width: 320px;
+        height: 350px;
     }
+    
     
 }
 

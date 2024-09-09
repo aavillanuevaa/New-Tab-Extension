@@ -1,196 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Home</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
-</head>
-<body>
-    <section id = "header">
-        <h id = "time"> time will go here</h>
-        <div class = "clock">
-            <div id = "hour"></div>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    
+  </head>
+  <body>
+    <section id="header">
+      <h id="greeting"></h>
+      <h id="time"></h>
+      <div class="clock">
+        <div id = "outline">
+          <div id="clock_border">
+            <div id="hour"></div>
             <span>:</span>
-            <div id = "minute"></div>
+            <div id="minute"></div>
             <span>:</span>
-            <div id = "second"></div>
+            <div id="second"></div>
+          </div>
         </div>
-    </section>
-    <section id = content>
-        <section id = mid>
-            <section id = "calendar_section"> 
-                <div class="calendar_wrapper">
-                    <header>
-                        <p class="current-date">August</p>
-                        <div class="icons">
-                            <span id="prev" class="material-symbols-rounded">chevron_left</span>
-                            <span id="next" class="material-symbols-rounded">chevron_right</span>
-                        </div>
-                    </header>
-                    <div class="calendar">
-                        <ul class="weeks">
-                          <li>Sun</li>
-                          <li>Mon</li>
-                          <li>Tue</li>
-                          <li>Wed</li>
-                          <li>Thu</li>
-                          <li>Fri</li>
-                          <li>Sat</li>
-                        </ul>
-                        <ul class="days">
-                            <li>28</li>
-                            <li>29</li>
-                            <li>30</li>
-                            <li>31</li>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                            <li>4</li>
-                            <li>5</li>
-                            <li>6</li>
-                            <li>7</li>
-                            <li>8</li>
-                            <li>9</li>
-                            <li>10</li>
-                            <li>11</li>
-                            <li>12</li>
-                            <li>13</li>
-                            <li>14</li>
-                            <li>15</li>
-                            <li>16</li>
-                            <li>17</li>
-                            <li>18</li>
-                            <li>19</li>
-                            <li>20</li>
-                            <li>21</li>
-                            <li>22</li>
-                            <li>23</li>
-                            <li>24</li>
-                            <li>25</li>
-                            <li>26</li>
-                            <li>27</li>
-                            <li>28</li>
-                            <li>29</li>
-                            <li>30</li>
-                            <li>31</li>
-                            
-                        </ul>
-                      </div>
-                </div>
         
-                
-                
-                <!-- <iframe src="https://calendar.google.com/calendar/embed?height=450&wkst=1&ctz=America%2FNew_York&bgcolor=%2329738e&showTitle=0&showDate=&showPrint=0&showCalendars=0&showTz=0&src=YW5nZWxvdmlsbDA5MDhAZ21haWwuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%230B8043" style="border:solid 10px #5f96aa" width="550" height="400" frameborder="0" scrolling="no" ></iframe> -->
-            </section>
-            <section id = "search">
-                <div class="search_container">
-                    <form action="https://www.google.com/search" method="get" class = "search_bar">
-                        <input type="text" placeholder="search" name ="q"  autocomplete="off">
-                        <button type="submit"><img src="images/search.png"></button>
-                    </form>
-                </div>
-            </section>
-        </section>
-        
+          
+      </div>
+      
     </section>
-    
+    <section id="content">
 
-    <footer id = "footer">
-        <section id = "quicklinks">
-            <span>
-                <div id = row>
-                    <li id = link_container>
-                        <a href = "https://aniwatch.to/">
-                            <span>
-                                <img src="images/anime.png"alt = "ani icon">
-                            </span>
-                        </a>
-                    </li>
-    
-                    <li id = link_container>
-                        <a href = "https://www.youtube.com/">
-                            <span>
-                                <img src="images/youtube.png"alt = "yt icon">                       
-                            </span>
-                        </a>
-                    </li>
-    
-                    <li id = link_container>
-                        <a href = "https://www.netflix.com/browse">
-                            <span>
-                                <img src="images/netflix.png"alt = "ntflx icon">
-                            </span>
-                        </a>
-                    </li>
-    
-                    <li id = link_container>
-                        <a href = "https://www.amazon.com/">
-                            <span>
-                                <img src="images/amazon.png"alt = "amzn icon">
-                            </span>
-                        </a>
-                    </li>
-    
-                    <li id = link_container>
-                        <a href = "https://mail.google.com/mail/u/0/#inbox">
-                            <span>
-                                <img src="images/gmail.png"alt = "mail icon">
-                            </span>
-                        </a>
-                    </li>
+      <section id = left>
+        <div id = "calculate">
+          <div id="border">
+            <h id = "daysLeft"></h>
+            <h id = "daysLeft2"></h>
+            <div id = input_wrap>
+              <input type="date" id="myDate">
+              <button id="dateSubmit"  ><b>SUBMIT</b></button>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+      </section>
+
+
+      <section id="mid">
+        <section id="calendar_section">
+          <div class="calendar_wrapper">
+            <header>
+              <p class="current-date">August</p>
+              <div class="icons">
+                <span id="prev" class="material-symbols-rounded">chevron_left</span>
+                <span id="next" class="material-symbols-rounded">chevron_right</span>
+              </div>
+            </header>
+            <div class="calendar">
+              <ul class="weeks">
+                <li>Sun</li>
+                <li>Mon</li>
+                <li>Tue</li>
+                <li>Wed</li>
+                <li>Thu</li>
+                <li>Fri</li>
+                <li>Sat</li>
+              </ul>
+              <ul class="days">
+                <li>28</li>
+                <li>29</li>
+                <li>30</li>
+                <li>31</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+                <li>15</li>
+                <li>16</li>
+                <li>17</li>
+                <li>18</li>
+                <li>19</li>
+                <li>20</li>
+                <li>21</li>
+                <li>22</li>
+                <li>23</li>
+                <li>24</li>
+                <li>25</li>
+                <li>26</li>
+                <li>27</li>
+                <li>28</li>
+                <li>29</li>
+                <li>30</li>
+                <li>31</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section id="search">
+          <div class="search_container">
+            <form
+              action="https://www.google.com/search"
+              method="get"
+              class="search_bar"
+            >
+              <input
+                type="text"
+                placeholder="Search Anything..."
+                name="q"
+                autocomplete="off"
+              />
+              <button type="submit"><img src="images/search.png" /></button>
+            </form>
+          </div>
+        </section>
+      </section>
+
+      <section id = "right">
+        <section id = "notepad">
+          <div id = toprow>
+            <h>Notes</h>
+            <div id = "buttons">
+              <p><button id="save" role="button" onclick="save()">Save</button></p>
+              <p><button id="clear" role="button" onclick="clear()"><b>Clear</b></button></p>
+            </div>
             
-                    <li id = link_container>
-                        <a href = "https://my.ucf.edu/?shib_logout=done">
-                            <span>
-                                <img src="images/ucf.png"alt = "myUCF icon">
-                            </span>
-                        </a>
-                    </li>
-    
-                    <li id = link_container>
-                        <a href = "https://webcourses.ucf.edu/">
-                            <span>
-                                <img src="images/canvas.png"alt = "canvas icon">
-                            </span>
-                        </a>
-                    </li>
-    
-                    <li id = link_container>
-                        <a href = "https://www.microsoft365.com/?auth=2">
-                            <span>
-                                <img src="images/microsoft.png"alt = "microsoft icon">
-                            </span>
-                        </a>
-                    </li>
-    
-                    <li id = link_container>
-                        <a href = "https://github.com/">
-                            <span>
-                                <img src="images/github.png"alt = "github icon">
-                            </span>
-                        </a>
-                    </li>
-    
-                    <li id = link_container>
-                        <span>
-                            <a href = "https://docs.google.com/document/u/0/">
-                                <img src="images/docs.png"alt = "docs icon">
-                            </a>
-                        </span>
-                    </li>
-                </div>
-            </span>
+            
+          </div>
+          
+          <div id = "note_wrapper">
+            <textarea id = "area" placeholder="Write Anything..."></textarea>
+          </div>
+          
+          
         </section>
-    </footer>
-    
 
-    <script src="script.js"></script>
-</body>
+
+      </section>
+    </section>
+
+    <footer id="footer">
+      <section id="quicklinks">
+        <span>
+          <div id="row">
+
+            <li id="link_container">
+              <a href="https://aniwatch.to/">
+                <span>
+                  <img src="images/anime.png" alt="ani icon" />
+                </span>
+              </a>
+            </li>
+
+            <li id="link_container">
+              <a href="https://www.youtube.com/">
+                <span>
+                  <img src="images/youtube.png" alt="yt icon" />
+                </span>
+              </a>
+            </li>
+
+            <li id="link_container">
+              <a href="https://www.netflix.com/browse">
+                <span>
+                  <img src="images/netflix.png" alt="ntflx icon" />
+                </span>
+              </a>
+            </li>
+
+            <li id="link_container">
+              <a href="https://www.amazon.com/">
+                <span>
+                  <img src="images/amazon.png" alt="amzn icon" />
+                </span>
+              </a>
+            </li>
+
+            <li id="link_container">
+              <a href="https://mail.google.com/mail/u/0/#inbox">
+                <span>
+                  <img src="images/gmail.png" alt="mail icon" />
+                </span>
+              </a>
+            </li>
+
+            <li id="link_container">
+              <a href="https://my.ucf.edu/?shib_logout=done">
+                <span>
+                  <img src="images/ucf.png" alt="myUCF icon" />
+                </span>
+              </a>
+            </li>
+
+            <li id="link_container">
+              <a href="https://webcourses.ucf.edu/">
+                <span>
+                  <img src="images/canvas.png" alt="canvas icon" />
+                </span>
+              </a>
+            </li>
+
+            <li id="link_container">
+              <a href="https://www.microsoft365.com/?auth=2">
+                <span>
+                  <img src="images/microsoft.png" alt="microsoft icon" />
+                </span>
+              </a>
+            </li>
+
+            <li id="link_container">
+              <a href="https://github.com/">
+                <span>
+                  <img src="images/github.png" alt="github icon" />
+                </span>
+              </a>
+            </li>
+
+            <li id="link_container">
+              <span>
+                <a href="https://docs.google.com/document/u/0/">
+                  <img src="images/docs.png" alt="docs icon" />
+                </a>
+              </span>
+            </li>
+          </div>
+        </span>
+      </section>
+    </footer>
+    <script src="script.js">
+    </script>
+  </body>
 </html>

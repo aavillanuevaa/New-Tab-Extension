@@ -1,19 +1,32 @@
 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 const monthName = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
-let currentTime = new Date()
-let month = monthName[currentTime.getMonth()]
-let year = currentTime.getFullYear()
-let dayNum = currentTime.getDate()
+let currentTime = new Date();
+let month = monthName[currentTime.getMonth()];
+let year = currentTime.getFullYear();
+let dayNum = currentTime.getDate();
 let day = weekday[currentTime.getDay()];
-
-document.getElementById("time").innerHTML = day + ", " + month + " " + dayNum + ", " + year 
 
 const hour = document.getElementById("hour");
 const minute = document.getElementById("minute");
 const second = document.getElementById("second");
 
-const clock = setInterval(function time() {
+const time = setInterval(function time() {
+    let greeting = "";
+    let check = currentTime.getHours();
+
+    if (check < 12){
+        greeting = "Good Morning "
+    }
+    else if (check < 18){
+        greeting = "Good Afternoon "
+    }
+    else{
+        greeting = "Good Evening "
+    }
+    document.getElementById("greeting").innerHTML = greeting + " Angelo,";
+    document.getElementById("time").innerHTML = "Today is " + day + " " + month + " " + dayNum + ".";
+
     const dateNow = new Date()
     let hr = dateNow.getHours();
     let min = dateNow.getMinutes();
@@ -37,7 +50,7 @@ const clock = setInterval(function time() {
 
 
 
-
+//<------------------------------------------- CALENDAR SECTION ------------------------------------------->
 
 const daysTag = document.querySelector(".days"),
 currentDate = document.querySelector(".current-date"),
@@ -89,3 +102,82 @@ prevNextIcon.forEach(icon => {
         renderCalendar();
     });
 });
+
+
+//<------------------------------------------- NOTE PAD SECTION ------------------------------------------->
+
+display_saved_note();
+var button = document.getElementById("clear");
+button.addEventListener("click", clear);
+var button = document.getElementById("save");
+button.addEventListener("click", save);
+
+
+function clear() {
+    document.getElementById("area").value = "";   
+}
+
+function save() {
+    var area = document.getElementById("area");
+    localStorage.setItem("note", area.value);
+    
+}
+
+function display_saved_note() {
+    let result = localStorage.getItem("note");
+    
+    if(result === null) {
+        result = "No note saved";
+    }
+    document.getElementById('area').value = result;
+}
+
+//<-------------------------------------------  SECTION ------------------------------------------->
+if(localStorage.getItem("numDays")){
+    UpdateDays();
+    displaySavedDate();
+}
+
+document.getElementById("dateSubmit").onclick = dateInput;
+
+function dateInput(){
+    const inputDate = document.getElementById("myDate");
+    let date1 = new Date();  
+    let date2 = new Date(inputDate.value);
+
+    date2.setDate(date2.getDate()+1)
+    date2.setHours(0, 0, 0, 0);
+
+    calculate(date1, date2);
+    displaySavedDate();
+}
+
+function UpdateDays() {
+    let date1 = new Date();  
+    let date2 = new Date(localStorage.getItem("date2"));
+    console.log(date2);
+    calculate(date1, date2);
+}
+
+function displaySavedDate() {
+    let result1 = localStorage.getItem("numDays");
+    let result2 = localStorage.getItem("numDays2");
+   
+    document.getElementById("daysLeft").innerHTML = result1
+    document.getElementById("daysLeft2").innerHTML = result2
+   
+}
+
+function calculate(x,y){
+    let Difference_In_Days = parseInt(1 + ((y-x) / 86_400_000));
+
+    if (x.getTime() >= y.getTime()){
+        Difference_In_Days = 0;
+    }
+    
+    localStorage.setItem("date2", y.getUTCFullYear() + "-" + (y.getUTCMonth()+1) + "-" + (y.getUTCDate()));
+    localStorage.setItem("numDays", Difference_In_Days + " days until");
+    localStorage.setItem("numDays2", monthName[y.getUTCMonth()] + " " + (y.getUTCDate()) + ", " + y.getUTCFullYear());
+}
+
+
