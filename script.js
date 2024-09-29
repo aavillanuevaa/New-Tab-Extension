@@ -132,7 +132,7 @@ function display_saved_note() {
     document.getElementById('area').value = result;
 }
 
-//<-------------------------------------------  SECTION ------------------------------------------->
+//<------------------------------------------- Calculate Section ------------------------------------------->
 if(localStorage.getItem("numDays")){
     UpdateDays();
     displaySavedDate();
@@ -179,5 +179,244 @@ function calculate(x,y){
     localStorage.setItem("numDays", Difference_In_Days + " days until");
     localStorage.setItem("numDays2", monthName[y.getUTCMonth()] + " " + (y.getUTCDate()) + ", " + y.getUTCFullYear());
 }
+
+
+
+//<------------------------------------------- Timer Section ------------------------------------------->
+
+document.addEventListener('DOMContentLoaded', function() {
+    let isRunning = false;
+    let timer;
+    let timeLeft;
+    let startTime;
+
+    function parseTimeFromDisplay() {
+        const minutes = parseInt(document.getElementById('minutes_display').innerText) || 0;
+        const seconds = parseInt(document.getElementById('seconds_display').innerText) || 0;
+        return (minutes * 60) + seconds;
+    }
+
+    function updateDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        document.getElementById('minutes_display').innerText = minutes < 10 ? '0' + minutes : minutes;
+        document.getElementById('seconds_display').innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+
+    document.getElementById('start').addEventListener('click', function() {
+        if (!isRunning) {
+            timeLeft = parseTimeFromDisplay();
+            startTime = timeLeft;
+
+            timer = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateDisplay();
+                } else {
+                    clearInterval(timer);
+                    alert("Time's up! Take a break.");
+                }
+            }, 1000);
+            isRunning = true;
+        }
+    });
+
+    document.getElementById('pause').addEventListener('click', function() {
+        clearInterval(timer);
+        isRunning = false;
+    });
+
+    document.getElementById('reset').addEventListener('click', function() {
+        clearInterval(timer);
+        timeLeft = startTime;
+        updateDisplay();
+        isRunning = false;
+    });
+
+    function validateTimeInput(element) {
+        let value = element.innerText.replace(/[^0-9]/g, '');
+        if (value.length > 2) value = value.slice(0, 2);
+        if (element.id === 'seconds_display' && value > 59) value = '59';
+        element.innerText = value.length === 1 ? '0' + value : value;
+    }
+
+    document.getElementById('minutes_display').addEventListener('input', function() {
+        validateTimeInput(this);
+    });
+
+    document.getElementById('seconds_display').addEventListener('input', function() {
+        validateTimeInput(this);
+    });
+
+    // Initialize the display with the default time
+    timeLeft = 20 * 60;
+    updateDisplay();
+});
+
+//<------------------------------------------- Drag Section ------------------------------------------->
+
+var isLocked = true; 
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    setPositionFromLocalStorage("calculate");
+    setPositionFromLocalStorage("notepad");
+    setPositionFromLocalStorage("calendar_section");
+    setPositionFromLocalStorage("search");
+    setPositionFromLocalStorage("outline");
+    setPositionFromLocalStorage("timer");
+
+    dragElement(document.getElementById("calculate"));
+    dragElement(document.getElementById("notepad"));
+    dragElement(document.getElementById("calendar_section"));
+    dragElement(document.getElementById("search"));
+    dragElement(document.getElementById("outline"));
+    dragElement(document.getElementById("timer"));
+
+    window.addEventListener('resize', function() {  // **Added**
+        adjustPositionsOnResize("calculate");
+        adjustPositionsOnResize("notepad");
+        adjustPositionsOnResize("calendar_section");
+        adjustPositionsOnResize("search");
+        adjustPositionsOnResize("outline");
+        adjustPositionsOnResize("timer");
+    }); // **Added**
+
+   
+
+    var lockButton = document.getElementById("inpLock");
+    lockButton.addEventListener('click', function() {
+        isLocked = !isLocked;
+        toggleCursor();
+        
+        let button = this;
+        if (isLocked){
+            button.style.backgroundImage = "url('/images/lock.png')";
+        }else{
+            button.style.backgroundImage = "url('/images/unlock.png')";
+        }
+
+    });
+
+
+});
+
+function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+    elmnt.onmousedown = function(e) {
+        if (isLocked) return;
+        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
+            return;  
+        }
+
+        e.preventDefault();
+        elmnt.style.transition = 'none';
+       
+
+        elmnt.style.zIndex = "1000";
+
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+    };
+
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+      }
+
+    function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
+        elmnt.style.top = Math.max(0, (elmnt.offsetTop - pos2)) + "px";
+        elmnt.style.left = Math.max(0, (elmnt.offsetLeft - pos1)) + "px";
+    }
+    function closeDragElement() {
+        elmnt.style.zIndex = "";
+        document.onmouseup = null;
+        document.onmousemove = null;
+
+        snapToX(elmnt);
+        var topPercentage = elmnt.offsetTop / window.innerHeight;
+        var leftPercentage = elmnt.offsetLeft / window.innerWidth;
+        localStorage.setItem(elmnt.id + "_top", topPercentage);
+        localStorage.setItem(elmnt.id + "_left", leftPercentage);
+    }
+
+}
+function snapToX(elmnt) {
+    const width = window.innerWidth;  // **Changed**
+    const left1 = (width / 4) - (elmnt.offsetWidth / 2) - 125;  // **Changed**
+    const centerX = (width / 2) - (elmnt.offsetWidth / 2);  // **Changed**
+    const right1 = (3 * width / 4) - (elmnt.offsetWidth / 2) + 125;  // **Changed**
+
+    var snapPoints = [left1, centerX, right1];
+    var threshold = 50;  
+    var currentLeft = elmnt.offsetLeft;
+    var closestPoint = snapPoints.reduce(function(prev, curr) {
+        return (Math.abs(curr - currentLeft) < Math.abs(prev - currentLeft) ? curr : prev);
+    });
+
+    
+    if (Math.abs(closestPoint - currentLeft) <= threshold) {
+        elmnt.style.left = closestPoint + "px"; 
+    }
+}
+
+function savePositionToLocalStorage(elmnt) {  // **Added**
+    const topPercentage = elmnt.offsetTop / window.innerHeight;  // **Added**
+    const leftPercentage = elmnt.offsetLeft / window.innerWidth;  // **Added**
+    localStorage.setItem(elmnt.id + "_top", topPercentage);  // **Added**
+    localStorage.setItem(elmnt.id + "_left", leftPercentage);  // **Added**
+}
+
+
+function setPositionFromLocalStorage(elementId) {
+    var elmnt = document.getElementById(elementId);
+    var topPercentage = localStorage.getItem(elementId + "_top");
+    var leftPercentage = localStorage.getItem(elementId + "_left");
+
+    if (topPercentage && leftPercentage) {
+        elmnt.style.position = "absolute";
+        elmnt.style.top = (parseFloat(topPercentage) * window.innerHeight) + "px";
+        elmnt.style.left = (parseFloat(leftPercentage) * window.innerWidth) + "px";
+    }
+}
+
+function adjustPositionsOnResize(elementId) {
+    setPositionFromLocalStorage(elementId);
+}
+
+function toggleCursor() {
+    if (!isLocked){
+        var elements = document.querySelectorAll('.locked')
+    }else{
+        var elements = document.querySelectorAll('.draggable');
+    }   
+    
+    elements.forEach(function(elmnt) {
+        if (isLocked) {
+            elmnt.classList.add('locked');
+            elmnt.classList.remove('draggable');
+        } else {
+            elmnt.classList.add('draggable');
+            elmnt.classList.remove('locked');
+        }
+    });
+}
+
 
 

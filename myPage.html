@@ -4,6 +4,7 @@
     <title>Home</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/77fcaf96e2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,7 +28,7 @@
       <h id="greeting"></h>
       <h id="time"></h>
       <div class="clock">
-        <div id = "outline">
+        <div id = "outline" class="locked">
           <div id="clock_border">
             <div id="hour"></div>
             <span>:</span>
@@ -44,7 +45,7 @@
     <section id="content">
 
       <section id = left>
-        <div id = "calculate">
+        <div id = "calculate" class="locked">
           <div id="border">
             <h id = "daysLeft"></h>
             <h id = "daysLeft2"></h>
@@ -54,6 +55,27 @@
             </div>
           </div>
         </div>
+
+        <div id="timer" class="locked">
+          <div id="pomodoro_buttons">
+              <button id="start">Start</button>
+              <button id="pause">Pause</button>
+              <button id="reset">Reset</button>
+          </div>
+          <section id="pomodoro">
+              <div id="pomodoro_timer">
+                  <h2>Timer</h2>
+                  <div id="time_display">
+                      <span id="minutes_display" contenteditable="true">20</span>
+                      <span>:</span>
+                      <span id="seconds_display" contenteditable="true">00</span>
+                  </div>
+              </div>
+          </section>
+      </div>
+      
+        
+        
         
         
         
@@ -61,7 +83,7 @@
 
 
       <section id="mid">
-        <section id="calendar_section">
+        <section id="calendar_section" class="locked">
           <div class="calendar_wrapper">
             <header>
               <p class="current-date">August</p>
@@ -120,7 +142,7 @@
             </div>
           </div>
         </section>
-        <section id="search">
+        <section id="search" class="locked">
           <div class="search_container">
             <form
               action="https://www.google.com/search"
@@ -133,14 +155,14 @@
                 name="q"
                 autocomplete="off"
               />
-              <button type="submit"><img src="images/search.png" /></button>
+              <button type="submit"><img src="images/search.png" alt="Search"/></button>
             </form>
           </div>
         </section>
       </section>
 
       <section id = "right">
-        <section id = "notepad">
+        <section id = "notepad" class="locked">
           <div id = toprow>
             <h>Notes</h>
             <div id = "buttons">
@@ -163,6 +185,7 @@
     </section>
 
     <footer id="footer">
+      
       <section id="quicklinks">
         <span>
           <div id="row">
@@ -249,8 +272,20 @@
           </div>
         </span>
       </section>
+
+      
+
+      <input id="inpLock" type="checkbox" checked>
+      <label class="btn-lock" for="inpLock">
+        <svg width="36" height="40" viewBox="0 0 36 40">
+          <path class="lockb" d="M25 27C25 32.5228 20.5228 37 14 37C7.4772 37 3 32.5228 3 27C3 21.4772 7.4772 17 14 17C20.5228 17 25 21.4772 25 27Z"></path>
+          <path class="lock" d="M8 22V13C8 9.68629 10.6863 7 14 7V7C17.3137 7 20 9.68629 20 13V22"></path>
+      </svg>
+      </label>
     </footer>
+    
     <script src="script.js">
+
     </script>
   </body>
 </html>

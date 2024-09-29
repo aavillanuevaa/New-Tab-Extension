@@ -32,7 +32,6 @@ body{
 
 #left{
     display: flex;
-
     flex-direction: column;
 }
 
@@ -57,7 +56,9 @@ body{
     color: rgb(0, 0, 0);
     text-align: center;
     width:360px;
-    transition: 0.3s;
+    position: absolute;
+   
+   
 }
 #border{
     padding:10px;
@@ -104,15 +105,12 @@ body{
     border: 2.5px solid;
     padding: 0.35em 0.5em;
     box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
-    position: relative;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
     background-color: black;
     transition: 0.4s;
     color-scheme: dark;
-    
-    
 } 
 
 
@@ -124,15 +122,14 @@ body{
     flex-direction: column;
     justify-content: center;
     
-    /* position:absolute; */
+    
     
 }
 
 #right{
-    
     display: flex;
     justify-content: center;
-    /* position:absolute; */
+    
 }
 
 #notepad{
@@ -143,6 +140,8 @@ body{
     display: flex;
     flex-direction: column;
     border-radius: 4px;
+    position: absolute;
+    
     
 }
 
@@ -158,7 +157,7 @@ body{
     border: 3px solid;
     padding: 0.35em 0.5em;
     box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
-    position: relative;
+    
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
@@ -188,7 +187,6 @@ body{
 
 
 #note_wrapper textarea{
-    
     background-color:#2b2b2b ;
     border-radius: 4px;
     color:#f2f2f2;
@@ -199,14 +197,11 @@ body{
     font-size: 16px;
     line-height: 28px;
     background-image: linear-gradient(transparent, transparent 27px, gray 0px);
-    background-size: 100% 28px;
-
-    
+    background-size: 100% 28px;   
 }
 
 
-
-#save, #clear, #dateSubmit{
+#save, #clear, #dateSubmit, #pomodoro_buttons button{
     font-family: "Archivo", sans-serif;
     font-size: 10px;
     letter-spacing: 2px;
@@ -217,7 +212,7 @@ body{
     border: 3px solid;
     padding: 0.35em 0.5em;
     box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
-    position: relative;
+    
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
@@ -233,11 +228,11 @@ body{
 
 
 
-
-
 #outline{
     border:solid 6px #302d2d;
     border-radius: 4px;
+    position: absolute;
+    
 }
 
 #clock_border{
@@ -266,17 +261,15 @@ body{
     font-size:28px;
 }
 
-
-
 #calendar_section{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:10px;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
-    padding-top: 0px;
+    position: absolute;
+    border-radius: 10px;
 }
 
 
@@ -391,23 +384,19 @@ header .current-date{
 }
 
 
-
-
-form.search_bar{
-    width: 410px;
-    justify-content: center;
-}
 #search{
     text-align: center;
     display: flex;
-    width: 100%;
     justify-content: center;
+    position:absolute;
+    border-radius: 60px;
 }
+
 .search_container{
-    padding-top: 12px;
+   width:400px;
     justify-content: center;
-    
-    
+    position: relative;
+    z-index: 10;
 }
 
 .search_bar{
@@ -418,6 +407,7 @@ form.search_bar{
     border-radius: 60px;
     padding: 10px 20px;
     backdrop-filter: blur(4px) saturate(180%);
+
 }
 
 .search_bar input{
@@ -428,9 +418,11 @@ form.search_bar{
     font-size: 20px;
     color: lightgrey;
     padding-left: 10px;
+    pointer-events: auto;
+    min-width: 100px;
 }
 
-.search_container ::placeholder{
+.search_bar input::placeholder{
     color: white;
 }
 
@@ -447,6 +439,40 @@ form.search_bar{
     cursor: pointer;
 }
 
+#timer{
+    position:absolute;
+    background-color:#1f2020;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+#pomodoro {
+    text-align: center;
+    
+    color: #f2f2f2;
+    background-color:#292929;
+    padding: 15px;
+    border-radius: 5px;
+    
+  }
+  #pomodoro h2 {
+    margin: 0px;
+  }
+  
+  #time_display {
+    font-size: 3em;
+    
+  }
+  
+  #pomodoro_buttons button {
+    
+    margin: 5px;
+    cursor: pointer;
+  }
+
+  #pomodoro_buttons{
+    padding-bottom: 10px;
+  }
 
 
 
@@ -511,6 +537,19 @@ form.search_bar{
     padding:2px;
     
 }
+
+.draggable {
+    cursor: move;
+    outline: 3px white solid;
+    resize:both;
+}
+
+
+.locked {
+    cursor:default; 
+}
+
+
 
 @media (max-width: 2200px) {
     #row {
@@ -577,5 +616,90 @@ form.search_bar{
         gap: 10px;
     }
 }
+
+
+.btn-lock {
+    right: 4%;
+    bottom: 20px;
+    position: absolute;
+    
+    display: inline-block;
+    background:transparent;
+    width: 64px;
+    height: 64px;
+    box-sizing: border-box;
+    padding: 12px 0 0 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .btn-lock svg {
+    fill: none;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .btn-lock svg .bling {
+    stroke: #fff;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 3;
+    stroke-dashoffset: 15;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-lock svg .lock {
+    stroke: #fff;
+    stroke-width: 4;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke-dasharray: 26;
+    transition: stroke-dasharray 0.4s ease, transform 0.4s ease;
+  }
+  
+  .btn-lock svg .lockb {
+    fill: #fff;
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    transform: rotate(8deg);
+    transform-origin: 12px 15px;
+    transition: all 0.2s ease;
+  }
+  
+  #inpLock {
+    display: none;
+  }
+  
+  #inpLock:checked + label {
+    background: transparent;
+  }
+  
+  #inpLock:checked + label svg {
+    opacity: 1;
+  }
+  
+ 
+  
+  #inpLock:checked + label svg .lock {
+    stroke-dasharray: 60;
+  
+    animation: locked 0.5s linear forwards;
+  }
+  
+  #inpLock:checked + label svg .lockb {
+    transform: rotate(0);
+    transform-origin: 14px 22px;
+    transition: transform 0.3s ease;
+  }
+  
+ 
+  
+  @keyframes locked {
+    50% {
+        
+      transform: translateY(1px);
+    }
+    
+  }
 
 
